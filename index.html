@@ -1,0 +1,21 @@
+<html>
+
+<head>
+  <script>
+    let temp = {};
+
+    WebAssembly.instantiateStreaming(fetch('square_double.wasm'), temp)
+      .then(obj => {
+
+        let wasm = obj.instance.exports;
+        alert("Square function: 5 * 5 = " + wasm.square(5));
+        alert("Double function: 5 + 5 = " + wasm.double(5));
+
+      });
+  </script>
+</head>
+
+<body>
+</body>
+
+</html>
